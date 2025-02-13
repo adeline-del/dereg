@@ -39,7 +39,7 @@ const Navbar = () => {
               >
                 {label}
                 {isActive(path) && (
-                  <div className="absolute bottom-0 left-0 w-full h-0.5 bg-green-600 transform -translate-y-2" />
+                  <div className="absolute bottom-0 left-0 w-full h-0.5 bg-green-600 transform -translate-y-1" />
                 )}
               </Link>
             ))}
