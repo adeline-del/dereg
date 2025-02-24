@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Leaf } from 'lucide-react';
 
@@ -11,13 +11,13 @@ const Navbar = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <nav className="bg-white shadow-lg fixed w-full z-50">
+    <nav className="fixed top-[35px] left-0 w-full bg-white/50 shadow-lg z-50 backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <Link to="/" className="flex items-center">
               <Leaf className="h-8 w-8 text-green-600" />
-              <span className="ml-2 text-xl font-bold text-gray-800">Deregans</span>
+              <span className="ml-2 text-xl font-bold text-gray-800">Deregan's</span>
             </Link>
           </div>
 
@@ -33,13 +33,13 @@ const Navbar = () => {
               <Link
                 key={path}
                 to={path}
-                className={`relative text-gray-600 hover:text-green-600 transition-colors ${
-                  isActive(path) ? 'text-green-600' : ''
+                className={`relative text-lg font-medium text-gray-600 hover:text-green-200 transition-colors ${
+                  isActive('/') ? 'text-green-500' : ''
                 }`}
               >
                 {label}
                 {isActive(path) && (
-                  <div className="absolute bottom-0 left-0 w-full h-0.5 bg-green-600 transform -translate-y-1" />
+                  <div className="absolute bottom-0 left-0 w-full h-0.5 bg-green-600 transform -translate-y-0.5" />
                 )}
               </Link>
             ))}

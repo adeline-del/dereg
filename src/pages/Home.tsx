@@ -1,6 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { ArrowRight, Leaf, Shield, Users, ArrowLeft, ArrowRight as ArrowRightIcon } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { ArrowRight, Leaf, Shield, Users, ArrowLeft, ArrowRight as ArrowRightIcon, Award, Target, Heart, Book, FileText, Video, Download, MapPin, Phone, Mail, Clock, MessageSquare, Recycle, Droplets, Wind, Sprout } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { Swiper, SwiperSlide } from 'swiper/react';
+// import 'swiper/swiper-bundle.css';
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
+
 
 const slides = [
   {
@@ -46,10 +54,10 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="pt-16">
-      {/* Hero Section with Slider */}
-      <section className="relative h-screen">
-        {slides.map((slide, index) => (
+    <div className="pt-0">
+      {/* Hero Section with Floating Slider */}
+      <section id="home" className="relative h-screen overflow-hidden bg-gray-900 z-20">
+      {slides.map((slide, index) => (
           <div
             key={index}
             className={`absolute inset-0 w-full h-full transition-opacity duration-750 ease-in-out ${
@@ -67,6 +75,9 @@ const Home = () => {
               }}
             />
             <div className="absolute inset-0 bg-black bg-opacity-50" />
+            
+
+                {/* Content */}
             <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
               <div className={`text-white transition-all duration-500 transform ${
                 isAnimating ? 'translate-y-10 opacity-0' : 'translate-y-0 opacity-100'
@@ -82,16 +93,17 @@ const Home = () => {
                   className="inline-flex items-center bg-green-600 text-white px-6 py-3 rounded-md hover:bg-green-700 transition-colors duration-300"
                 >
                   Explore Our Products
-                  <ArrowRightIcon className="ml-2 h-5 w-5" />
+                  <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </div>
             </div>
           </div>
         ))}
+
         
         {/* Slider Controls */}
-        <div className="absolute bottom-8 left-0 right-0 z-10 flex justify-center items-center gap-4">
-          {slides.map((_, index) => (
+        <div className="absolute bottom-20 left-0 right-0 z-10 flex justify-center items-center gap-4">
+        {slides.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentSlide(index)}
@@ -118,11 +130,107 @@ const Home = () => {
         >
           <ArrowRight className="h-6 w-6" />
         </button>
+        
+
+
+  {/* SVG Wave placed at the bottom */}
+  <div className="absolute bottom-[-95px] left-0 w-full z-10 pointer-events-none">
+  <svg 
+    className="w-full h-auto"
+    xmlns="http://www.w3.org/2000/svg" 
+    viewBox="0 0 1440 320"
+  >
+    <path fill="white" fillOpacity="1" d="M0,96L60,85.3C120,75,240,53,360,69.3C480,85,600,139,720,176C840,213,960,235,1080,229.3C1200,224,1320,192,1380,176L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
+  </svg>
+</div>
+
       </section>
 
-      {/* Features Section */}
-      <section className="py-20 bg-white">
+
+
+
+
+
+
+      {/* Values Section */}
+      {/* <section className="py-20 bg-white"> */}
+      <div className="py-20 bg-white">
+  <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Our Core Values</h2>
+  
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+    {[
+      { icon: <Award className="h-8 w-8" />, title: "Excellence", description: "We strive for excellence in every product and service." },
+      { icon: <Users className="h-8 w-8" />, title: "Integrity", description: "We operate with honesty and uphold strong ethics." },
+      { icon: <Target className="h-8 w-8" />, title: "Innovation", description: "We continuously innovate to improve agriculture." },
+    ].map((value, index) => (
+      <div key={index} className="group perspective">
+        <div className="relative w-full h-48 transition-transform transform-style-3d group-hover:rotate-y-180">
+          <div className="absolute inset-0 flex flex-col items-center justify-center bg-gray-200 rounded-lg shadow-lg backface-hidden">
+            <div className="text-green-600">{value.icon}</div>
+            <h3 className="mt-4 text-xl font-semibold">{value.title}</h3>
+          </div>
+          <div className="absolute inset-0 flex items-center justify-center bg-green-600 text-white rounded-lg shadow-lg rotate-y-180 backface-hidden">
+            <p className="px-6 text-center">{value.description}</p>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+  
+  <style>
+    {`
+      .perspective { perspective: 1000px; }
+      .transform-style-3d { transform-style: preserve-3d; }
+      .backface-hidden { backface-visibility: hidden; }
+      .rotate-y-180 { transform: rotateY(180deg); }
+    `}
+  </style>
+</div>
+
+
+{/* </section> */}
+
+
+
+      {/* About Section */}
+      <section id="about" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h1 className="text-4xl font-bold text-gray-900 mb-6">About Deregan Limited</h1>
+            <p className="text-xl text-gray-600 max-w-5xl mx-auto">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam minima labore soluta voluptate adipisci dolores corrupti ipsam cum veniam iure suscipit ab natus autem, eum nam non quae ipsum voluptatem. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum exercitationem incidunt numquam? Eos et numquam asperiores magni repellendus id dolorum pariatur adipisci commodi, culpa voluptates impedit, vel error in a.
+            </p>
+            <p className="text-xl text-gray-600 max-w-4xl mx-auto">
+              Pioneering sustainable agriculture through innovative organic solutions since 2010. 
+              We're committed to transforming farming practices while protecting our environment.
+            </p>
+          </div>
+
+          {/* Vision & Mission */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-16">
+            <div className="bg-white p-8 rounded-lg shadow-md">
+              <Target className="h-12 w-12 text-green-600 mb-4" />
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">Our Vision</h2>
+              <p className="text-gray-600">
+                To be Africa's leading provider of organic agricultural solutions, 
+                fostering sustainable farming practices that benefit both people and planet.
+              </p>
+            </div>
+            <div className="bg-white p-8 rounded-lg shadow-md">
+              <Heart className="h-12 w-12 text-green-600 mb-4" />
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">Our Mission</h2>
+              <p className="text-gray-600">
+                To develop and deliver innovative organic agricultural products that enhance 
+                crop yields while maintaining ecological balance and promoting sustainable farming.
+              </p>
+            </div>
+          </div>
+
+
+
+
+          {/* features Section */}
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 opacity-0 translate-y-10 animate-[fadeUp_1s_ease-out_forwards]">
             <span className="text-green-600 font-semibold text-sm uppercase tracking-wider">Why Choose Us</span>
             <h2 className="text-4xl font-bold text-gray-900 mt-2 mb-4">
@@ -180,10 +288,13 @@ const Home = () => {
             ))}
           </div>
         </div>
+
+          
+        </div>
       </section>
 
-      {/* Featured Products Section */}
-      <section className="py-20 bg-gray-50">
+ {/* Featured Products Section */}
+ <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Featured Products</h2>
@@ -231,24 +342,327 @@ const Home = () => {
         </div>
       </section>
 
+
+
+
+      {/* Resources Section */}
+      <section id="resources" className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Knowledge Hub</h2>
+            <p className="text-xl text-gray-600">
+              Access our comprehensive collection of resources to enhance your understanding 
+              of organic farming practices and sustainable agriculture.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            {[
+              {
+                icon: <FileText className="h-8 w-8" />,
+                title: "Articles",
+                description: "In-depth articles on organic farming practices"
+              },
+              {
+                icon: <Book className="h-8 w-8" />,
+                title: "Guides",
+                description: "Step-by-step guides and tutorials"
+              },
+              {
+                icon: <Video className="h-8 w-8" />,
+                title: "Videos",
+                description: "Visual demonstrations and training content"
+              }
+            ].map((category, index) => (
+              <div key={index} className="bg-white p-6 rounded-lg shadow-md text-center">
+                <div className="inline-block p-3 bg-green-100 rounded-full mb-4">
+                  <div className="text-green-600">{category.icon}</div>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">{category.title}</h3>
+                <p className="text-gray-600">{category.description}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Latest Resources */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {[
+              {
+                title: "Best Practices for Organic Farming",
+                type: "article",
+                description: "Learn about the latest techniques and methodologies in organic farming for maximum yield.",
+                image: "https://images.unsplash.com/photo-1574943320219-553eb213f72d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                date: "March 15, 2024",
+                readTime: "10 min read"
+              },
+              {
+                title: "Organic Pest Control Guide",
+                type: "guide",
+                description: "Comprehensive guide on managing pests using organic methods.",
+                image: "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                date: "March 10, 2024",
+                downloadUrl: "#"
+              }
+            ].map((resource, index) => (
+              <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden">
+                <div className="md:flex">
+                  <div className="md:flex-shrink-0">
+                    <img
+                      className="h-48 w-full md:w-48 object-cover"
+                      src={resource.image}
+                      alt={resource.title}
+                    />
+                  </div>
+                  <div className="p-6">
+                    <div className="flex items-center mb-2">
+                      <div className="p-2 bg-green-100 rounded-full">
+                        <div className="text-green-600">
+                          {resource.type === 'article' ? <FileText className="h-6 w-6" /> : <Book className="h-6 w-6" />}
+                        </div>
+                      </div>
+                      <span className="ml-2 text-sm text-gray-500">{resource.date}</span>
+                      {resource.readTime && (
+                        <span className="ml-2 text-sm text-gray-500">• {resource.readTime}</span>
+                      )}
+                    </div>
+                    <h3 className="text-xl font-semibold text-gray-900 mb-2">{resource.title}</h3>
+                    <p className="text-gray-600 mb-4">{resource.description}</p>
+                    {resource.downloadUrl ? (
+                      <button className="inline-flex items-center text-green-600 hover:text-green-700">
+                        <Download className="h-5 w-5 mr-2" />
+                        Download Guide
+                      </button>
+                    ) : (
+                      <button className="inline-flex items-center text-green-600 hover:text-green-700">
+                        Read More
+                        <ArrowRight className="ml-2 h-5 w-5" />
+                      </button>
+                    )}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Sustainability Section */}
+      <section id="sustainability" className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Commitment to Sustainability</h2>
+            <p className="text-xl text-gray-600">
+              At Deregans, we believe in creating a sustainable future through 
+              responsible agricultural practices and environmental stewardship.
+            </p>
+          </div>
+
+          {/* Key Initiatives */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            {[
+              {
+                icon: <Leaf className="h-8 w-8" />,
+                title: "Organic Farming",
+                description: "Promoting chemical-free agriculture for healthier soil and crops"
+              },
+              {
+                icon: <Recycle className="h-8 w-8" />,
+                title: "Zero Waste",
+                description: "Implementing closed-loop systems in our production processes"
+              },
+              {
+                icon: <Droplets className="h-8 w-8" />,
+                title: "Water Conservation",
+                description: "Developing water-efficient farming solutions"
+              }
+            ].map((initiative, index) => (
+              <div key={index} className="bg-white p-6 rounded-lg shadow-md text-center">
+                <div className="inline-block p-3 bg-green-100 rounded-full mb-4">
+                  <div className="text-green-600">{initiative.icon}</div>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">{initiative.title}</h3>
+                <p className="text-gray-600">{initiative.description}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Environmental Impact */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                metric: "50,000+",
+                label: "Hectares of Land Preserved",
+                icon: <Sprout className="h-6 w-6" />
+              },
+              {
+                metric: "1M+",
+                label: "Trees Planted",
+                icon: <Leaf className="h-6 w-6" />
+              },
+              {
+                metric: "30%",
+                label: "Carbon Footprint Reduction",
+                icon: <Wind className="h-6 w-6" />
+              },
+              {
+                metric: "40M+",
+                label: "Liters of Water Saved",
+                icon: <Droplets className="h-6 w-6" />
+              }
+            ].map((stat, index) => (
+              <div key={index} className="bg-white p-6 rounded-lg shadow-md text-center">
+                <div className="inline-block p-3 bg-green-100 rounded-full mb-4">
+                  <div className="text-green-600">{stat.icon}</div>
+                </div>
+                <div className="text-3xl font-bold text-gray-900 mb-2">{stat.metric}</div>
+                <p className="text-gray-600">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Contact Form */}
+            <div className="bg-white p-8 rounded-lg shadow-md">
+              <h2 className="text-2xl font-bold mb-6">Send Us a Message</h2>
+              <form className="space-y-6">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                    Full Name
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-600"
+                    placeholder="John Doe"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                    Email Address
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-600"
+                    placeholder="john@example.com"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">
+                    Subject
+                  </label>
+                  <input
+                    type="text"
+                    id="subject"
+                    className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-600"
+                    placeholder="How can we help?"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    rows={4}
+                    className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-600"
+                    placeholder="Your message here..."
+                  ></textarea>
+                </div>
+                <button
+                  type="submit"
+                  className="w-full bg-green-600 text-white px-6 py-3 rounded-md hover:bg-green-700"
+                >
+                  Send Message
+                </button>
+              </form>
+            </div>
+
+            {/* Contact Information */}
+            <div className="space-y-8">
+              <div className="bg-white p-8 rounded-lg shadow-md">
+                <h2 className="text-2xl font-bold mb-6">Contact Information</h2>
+                <div className="space-y-4">
+                  <div className="flex items-start">
+                    <MapPin className="h-6 w-6 text-green-600 mr-4 mt-1" />
+                    <div>
+                      <h3 className="font-semibold">Address</h3>
+                      <p className="text-gray-600">123 Farming Street<br />Accra, Ghana</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <Phone className="h-6 w-6 text-green-600 mr-4 mt-1" />
+                    <div>
+                      <h3 className="font-semibold">Phone</h3>
+                      <p className="text-gray-600">+233 123 456 789</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <Mail className="h-6 w-6 text-green-600 mr-4 mt-1" />
+                    <div>
+                      <h3 className="font-semibold">Email</h3>
+                      <p className="text-gray-600">info@Deregans.com</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <Clock className="h-6 w-6 text-green-600 mr-4 mt-1" />
+                    <div>
+                      <h3 className="font-semibold">Business Hours</h3>
+                      <p className="text-gray-600">
+                        Monday - Friday: 8:00 AM - 5:00 PM<br />
+                        Saturday: 9:00 AM - 2:00 PM<br />
+                        Sunday: Closed
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white p-8 rounded-lg shadow-md">
+                <h2 className="text-2xl font-bold mb-6">Chat with Us Via Whatsapp</h2>
+                <div className="space-y-4">
+                  <div className="flex items-start">
+                    <MessageSquare className="h-6 w-6 text-green-600 mr-4 mt-1" />
+                    <div>
+                      <h3 className="font-semibold">Live Chat Support</h3>
+                      <p className="text-gray-600">
+                        We are available to assist you with any inquiries. Thank you!
+                      </p>
+                      <button className="mt-2 text-green-600 hover:text-green-700 font-medium">
+                        WHATSAPP
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
-      <section className="py-20 bg-green-600">
+      {/* <section className="py-20 bg-green-600">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold text-white mb-4">
             Ready to Transform Your Agricultural Practice?
           </h2>
           <p className="text-xl text-white mb-8">
-            Join thousands of farmers who trust Deregans for their agricultural needs
+            Join thousands of farmers who trust Der Organic for their agricultural needs
           </p>
           <Link 
-            to="/contact" 
+            to="/products" 
             className="inline-flex items-center bg-white text-green-600 px-6 py-3 rounded-md hover:bg-gray-100"
           >
-            Contact Us Today
+            Explore Our Products
             <ArrowRightIcon className="ml-2 h-5 w-5" />
           </Link>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 };
