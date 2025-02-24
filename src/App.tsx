@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import TopBar from "./components/Topbar";
+// import Topbar from "./components/Topbar";
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import Products from './pages/Products';
+import Topbar from './components/TopBar';
 
 function ScrollToTop() {
   const location = useLocation();
@@ -21,7 +22,7 @@ function App() {
     <Router>
       <ScrollToTop />
       <div className="min-h-screen flex flex-col">
-      <TopBar />
+      <Topbar />
       
         <Navbar />
         <main className="flex-grow">

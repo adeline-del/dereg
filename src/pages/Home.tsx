@@ -1,12 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ArrowRight, Leaf, Shield, Users, ArrowLeft, ArrowRight as ArrowRightIcon, Award, Target, Heart, Book, FileText, Video, Download, MapPin, Phone, Mail, Clock, MessageSquare, Recycle, Droplets, Wind, Sprout } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { Swiper, SwiperSlide } from 'swiper/react';
-// import 'swiper/swiper-bundle.css';
 
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
 
 
 
