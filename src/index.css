@@ -68,3 +68,64 @@
 .clip-bottom {
   clip-path: ellipse(100% 85% at 50% 100%);
 }
+
+
+/* Define the keyframes for the pulse effect */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  /* Increase size at midpoint */
+  50% {
+    transform: scale(1.1); 
+  }
+  /* Return to original size */
+  100% {
+    transform: scale(1); 
+  }
+}
+
+/* The pulse effect to the active link */
+.active-link {
+  animation: pulse 1s ease-in-out infinite; /* 1 second duration, infinite loop */
+  color: #FF5B00; 
+}
+
+
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply text-gray-800 font-sans;
+  }
+}
+
+@layer components {
+  .section-heading {
+    @apply text-3xl md:text-4xl font-bold text-gray-900 mb-6;
+  }
+  
+  .section-subheading {
+    @apply text-xl text-gray-600 max-w-3xl mx-auto;
+  }
+}
+
+
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.8s ease-out forwards;
+}

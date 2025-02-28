@@ -22,7 +22,7 @@ const products: Product[] = [
     size: "5kg",
     price: 299.99,
     description: "Premium organic fertilizer for enhanced crop yield",
-    image: "https://images.unsplash.com/photo-1592978132926-646f6ba65d39?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    image: "https://res.cloudinary.com/djfnmztu9/image/upload/v1740671179/Picture6_hhmilv.jpg",
     benefits: ["Improves soil structure", "Enhances nutrient retention", "Promotes root development"],
     application: "Apply 2-3 times during growing season"
   },
@@ -33,7 +33,7 @@ const products: Product[] = [
     size: "10kg",
     price: 549.99,
     description: "Premium organic fertilizer for enhanced crop yield",
-    image: "https://images.unsplash.com/photo-1592978132926-646f6ba65d39?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    image: "https://res.cloudinary.com/djfnmztu9/image/upload/v1740671179/Picture8_znrfpw.jpg",
     benefits: ["Improves soil structure", "Enhances nutrient retention", "Promotes root development"],
     application: "Apply 2-3 times during growing season"
   },
@@ -44,7 +44,7 @@ const products: Product[] = [
     size: "1L",
     price: 179.99,
     description: "Effective weed control without harmful chemicals",
-    image: "https://images.unsplash.com/photo-1628352081506-83c43123ed6b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    image: "https://res.cloudinary.com/djfnmztu9/image/upload/v1740671179/Picture8_znrfpw.jpg",
     benefits: ["Fast-acting formula", "No residual effects", "Safe for crops"],
     application: "Spray directly on weeds"
   },
@@ -55,7 +55,7 @@ const products: Product[] = [
     size: "5L",
     price: 799.99,
     description: "Effective weed control without harmful chemicals",
-    image: "https://images.unsplash.com/photo-1628352081506-83c43123ed6b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    image: "https://res.cloudinary.com/djfnmztu9/image/upload/v1740671180/Picture16_itlyh2.jpg",
     benefits: ["Fast-acting formula", "No residual effects", "Safe for crops"],
     application: "Spray directly on weeds"
   },
@@ -66,7 +66,7 @@ const products: Product[] = [
     size: "500ml",
     price: 119.99,
     description: "Natural pest control solution for healthy crops",
-    image: "https://images.unsplash.com/photo-1595880350477-e5f100d7a59d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    image: "https://res.cloudinary.com/djfnmztu9/image/upload/v1740671180/Picture19_-1_dk3d7w.jpg",
     benefits: ["Broad spectrum control", "No harmful residues", "Safe for beneficial insects"],
     application: "Apply weekly during pest season"
   },
@@ -77,7 +77,7 @@ const products: Product[] = [
     size: "2L",
     price: 429.99,
     description: "Natural pest control solution for healthy crops",
-    image: "https://images.unsplash.com/photo-1595880350477-e5f100d7a59d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    image: "https://res.cloudinary.com/djfnmztu9/image/upload/v1740671180/Picture16_itlyh2.jpg",
     benefits: ["Broad spectrum control", "No harmful residues", "Safe for beneficial insects"],
     application: "Apply weekly during pest season"
   }
@@ -110,7 +110,7 @@ const Products = () => {
   return (
     <div className="pt-16">
       {/* Hero Section */}
-      <section className="bg-green-600 text-white py-20">
+      <section className="bg-orange-600 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-4xl font-bold mb-6">Our Products</h1>
           <p className="text-xl max-w-3xl">
@@ -126,7 +126,7 @@ const Products = () => {
           {/* Filters */}
           <div className="bg-white p-6 rounded-lg shadow-md mb-8">
             <div className="flex items-center mb-4">
-              <Filter className="h-5 w-5 text-green-600 mr-2" />
+              <Filter className="h-5 w-5 text-orange-600 mr-2" />
               <h2 className="text-lg font-semibold">Filter Products</h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -180,7 +180,7 @@ const Products = () => {
                       <h3 className="text-xl font-semibold mb-2">{product.name}</h3>
                       <p className="text-gray-600 mb-2">{product.description}</p>
                     </div>
-                    <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">
+                    <span className="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm">
                       ₵{product.price.toLocaleString()}
                     </span>
                   </div>
@@ -195,7 +195,7 @@ const Products = () => {
 
                   <button
                     onClick={() => setSelectedProduct(product)}
-                    className="w-full bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 flex items-center justify-center transition-colors"
+                    className="w-full bg-orange-600 text-white px-4 py-2 rounded-md hover:bg-orange-700 flex items-center justify-center transition-colors"
                   >
                     Learn More
                     <ArrowRight className="ml-2 h-4 w-4" />
