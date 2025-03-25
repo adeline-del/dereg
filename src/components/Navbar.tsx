@@ -36,7 +36,7 @@ const Navbar = () => {
         <img 
            src="https://res.cloudinary.com/djfnmztu9/image/upload/v1740753495/logo-nobg_lggtzj.png" 
             alt="Logo"
-            className="h-30 w-40 object-contain" 
+            className="h-20 w-40 object-contain" 
          />
     <span className="text-3xl font-bold text-black -ml-14">Deregan's</span>
     </Link>
@@ -73,13 +73,13 @@ const Navbar = () => {
               Products
               {activeSection === 'products' && <div className="absolute bottom-0 left-0 w-full h-0.5 bg-orange-600 transform -translate-y-0.5" />}
             </Link>
-            <button
+            {/* <button
               onClick={() => handleLinkClick('resources')}
               className={`relative text-lg font-medium text-black hover:text-orange-200 transition-colors`}
             >
               Resources
               {activeSection === 'resources' && <div className="absolute bottom-0 left-0 w-full h-0.5 bg-orange-600 transform -translate-y-0.5" />}
-            </button>
+            </button> */}
             <button
               onClick={() => handleLinkClick('sustainability')}
               className={`relative text-lg font-medium text-black hover:text-orange-200 transition-colors`}
@@ -146,7 +146,7 @@ const Navbar = () => {
             >
               Products
             </Link>
-            <button
+            {/* <button
               onClick={() => {
                 handleLinkClick('resources');
                 setIsOpen(false);
@@ -154,7 +154,7 @@ const Navbar = () => {
               className="block w-full text-left px-3 py-2 rounded-md text-black hover:text-orange-600"
             >
               Resources
-            </button>
+            </button> */}
             <button
               onClick={() => {
                 handleLinkClick('sustainability');

@@ -1,5 +1,5 @@
-import React from 'react';
-import { X } from 'lucide-react';
+import React, { useEffect } from 'react';
+import { X, Check, Sprout } from 'lucide-react';
 
 interface ProductModalProps {
   product: {
@@ -9,75 +9,107 @@ interface ProductModalProps {
     size: string;
     benefits: string[];
     application: string;
+    image: string;
   };
   onClose: () => void;
 }
 
 const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) => {
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, []);
+
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-      <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-        <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true" onClick={onClose}></div>
+    <div 
+      className="fixed inset-0 z-50 overflow-y-auto bg-black bg-opacity-50 backdrop-blur-sm"
+      onClick={onClose}
+    >
+      <div className="min-h-screen px-4 text-center">
+        <div className="fixed inset-0" aria-hidden="true" />
 
-        <span className="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+        <div 
+          className="inline-block w-full max-w-4xl p-6 my-8 text-left align-middle transition-all transform bg-white shadow-2xl rounded-2xl"
+          onClick={e => e.stopPropagation()}
+        >
+          <button
+            onClick={onClose}
+            className="absolute top-4 right-4 p-2 rounded-full hover:bg-gray-100 transition-colors"
+            aria-label="Close modal"
+            title="Close modal"
+          >
+            <X className="h-6 w-6 text-gray-500" />
+          </button>
 
-        <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
-          <div className="absolute top-0 right-0 pt-4 pr-4">
-            <button
-              onClick={onClose}
-              className="bg-white rounded-md text-gray-400 hover:text-gray-500 focus:outline-none"
-            >
-              <X className="h-6 w-6" />
-            </button>
-          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="relative">
+              <div className="aspect-square rounded-xl overflow-hidden">
+                <img 
+                  src={product.image} 
+                  alt={product.name}
+                  className="w-full h-full object-cover transform transition-transform hover:scale-105"
+                />
+              </div>
+              <div className="absolute top-4 left-4 bg-orange-600 text-white px-4 py-2 rounded-full">
+                ₵{product.price.toLocaleString()}
+              </div>
+            </div>
 
-          <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-            <div className="sm:flex sm:items-start">
-              <div className="mt-3 text-center sm:mt-0 sm:text-left w-full">
-                <h3 className="text-2xl leading-6 font-bold text-gray-900 mb-4" id="modal-title">
+            <div className="space-y-6">
+              <div>
+                <h3 className="text-3xl font-bold text-gray-900 mb-2">
                   {product.name}
                 </h3>
-                <div className="mt-4 space-y-4">
-                  <p className="text-gray-600">{product.description}</p>
+                <p className="text-lg text-gray-600">{product.description}</p>
+              </div>
+
+              <div className="bg-orange-50 rounded-xl p-4">
+                <div className="flex items-center gap-2 mb-2">
+                  <Sprout className="h-5 w-5 text-orange-600" />
+                  <h4 className="font-semibold text-gray-900">Product Details</h4>
+                </div>
+                <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <p className="font-semibold text-gray-900">Size:</p>
-                    <p className="text-gray-600">{product.size}</p>
+                    <p className="text-sm text-gray-500">Size</p>
+                    <p className="font-medium text-gray-900">{product.size}</p>
                   </div>
                   <div>
-                    <p className="font-semibold text-gray-900">Price:</p>
-                    <p className="text-2xl font-bold text-orange-600">₵{product.price.toLocaleString()}</p>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-900">Benefits:</p>
-                    <ul className="list-disc list-inside text-gray-600">
-                      {product.benefits.map((benefit, index) => (
-                        <li key={index}>{benefit}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-900">Application:</p>
-                    <p className="text-gray-600">{product.application}</p>
+                    <p className="text-sm text-gray-500">Application</p>
+                    <p className="font-medium text-gray-900">{product.application}</p>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
 
-          <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-            <button
-              type="button"
-              className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-orange-600 text-base font-medium text-white hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 sm:ml-3 sm:w-auto sm:text-sm"
-            >
-              Purchase Now
-            </button>
-            <button
-              type="button"
-              onClick={onClose}
-              className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
-            >
-              Cancel
-            </button>
+              <div>
+                <h4 className="font-semibold text-gray-900 mb-3">Key Benefits</h4>
+                <ul className="space-y-2">
+                  {product.benefits.map((benefit, index) => (
+                    <li key={index} className="flex items-center gap-2">
+                      <Check className="h-5 w-5 text-green-500 flex-shrink-0" />
+                      <span className="text-gray-600">{benefit}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="flex gap-4 pt-4">
+                <button 
+                  className="flex-1 bg-orange-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-orange-700 transform transition-all hover:scale-105 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2"
+                  aria-label="Purchase product"
+                >
+                  Purchase Now
+                </button>
+                <button 
+                  onClick={onClose}
+                  className="flex-1 bg-gray-100 text-gray-700 px-6 py-3 rounded-xl font-semibold hover:bg-gray-200 transition-colors focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
+                  aria-label="Cancel purchase"
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -7,4 +7,10 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ['lucide-react'],
   },
+  server: {
+    proxy: {
+      // Proxy API requests to Formspree
+      '/api': 'https://formspree.io',
+    },
+  },
 });
