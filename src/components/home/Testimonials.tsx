@@ -8,7 +8,7 @@ const testimonials = [
     role: "Cocoa Farmer, Western Region",
     content:
       "Since switching to Deregans' organic fertilizers, my cocoa yields have increased by 30% while soil health has visibly improved. Their sustainable approach has transformed my farm.",
-    image: "https://res.cloudinary.com/djfnmztu9/image/upload/v1742482531/fruit-3247447_1920_hvol1x.jpg",
+    image: "https://res.cloudinary.com/djfnmztu9/image/upload/v1742485336/fruit-3247447_1920_bz3klj.jpg",
   },
   {
     id: 2,
@@ -24,7 +24,7 @@ const testimonials = [
     role: "Rice Farmer, Volta Region",
     content:
       "They provide top-quality organic agrochemicals and have excellent customer service. We highly recommend them.",
-    image: "https://res.cloudinary.com/djfnmztu9/image/upload/v1742482577/rice-testi_mckaif.jpg",
+    image: "https://res.cloudinary.com/djfnmztu9/image/upload/v1742485417/rice-testi_gmwkxn.jpg",
   },
   {
     id: 4,
@@ -40,7 +40,7 @@ const testimonials = [
     role: "Millet Farmer, Northern Region",
     content:
       "I've reduced chemical use by 40% while increasing my harvest. This is the best investment I've made for my farm!",
-    image: "https://res.cloudinary.com/djfnmztu9/image/upload/v1742482530/pearl-millet_mviihw.jpg",
+    image: "https://res.cloudinary.com/djfnmztu9/image/upload/v1742482530/mill_tnlxnu.jpg",
   },
   {
     id: 5,
@@ -48,7 +48,7 @@ const testimonials = [
     role: "Cocoyam Farmer, Northern Region",
     content:
       "We’ve been using Deragan’s organic fertilizers for a while, and the results have been amazing. Our cocoyams are bigger and of higher quality. I have already started recommending them.",
-    image: "https://res.cloudinary.com/djfnmztu9/image/upload/v1742482530/pearl-millet_mviihw.jpg",
+    image: "https://res.cloudinary.com/djfnmztu9/image/upload/v1742909465/yam-5318942_1280_pfltbd.jpg",
   }
 ];
 

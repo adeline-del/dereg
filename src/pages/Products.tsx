@@ -1,7 +1,6 @@
 import { useState, useMemo } from 'react';
 import { ArrowRight, Search, Package2, Leaf, ChevronLeft, ChevronRight } from 'lucide-react';
 import ProductModal from '../components/ProductModal';
-import ImageSlider from '../components/ImageSlider';
 import BackToTop from '../components/BackToTop';
 
 type Product = {
@@ -584,10 +583,7 @@ const Products = () => {
                 key={product.id} 
                 className="bg-white rounded-2xl shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-xl"
               >
-                <ImageSlider 
-                  images={[product.image]} 
-                  productName={product.name}
-                />
+        
                 
                 <div className="p-6">
                   <div className="flex items-start gap-4 mb-4">

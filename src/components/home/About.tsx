@@ -36,7 +36,7 @@ const About = () => {
               </div>
               <div className="h-full">
                 <img 
-                  src="https://res.cloudinary.com/djfnmztu9/image/upload/v1742482578/tomatoes-1561565_1280_qhelns.jpg" 
+                  src="https://res.cloudinary.com/djfnmztu9/image/upload/v1742485422/tomatoes-1561565_1280_k7o7tf.jpg" 
                   alt="Sustainable farming" 
                   className="h-full w-full object-cover"
                 />

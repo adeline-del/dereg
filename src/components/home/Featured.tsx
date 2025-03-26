@@ -5,7 +5,7 @@ const Featured = () => {
   const products = [
     {
       name: "Asaasehene Organic Fertilizer",
-      image: "https://res.cloudinary.com/djfnmztu9/image/upload/v1740671180/Picture16_itlyh2.jpg",
+      image: "https://res.cloudinary.com/djfnmztu9/image/upload/v1742485366/Picture6_bahgje.jpg",
       description: "Premium organic fertilizer for enhanced crop yield"
     },
     {
