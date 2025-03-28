@@ -1,37 +1,61 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Phone, Mail, MapPin, MessageSquare } from 'lucide-react';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "../ui/dialog"
+
 
 const Contact = () => {
+  const [isDialogOpen, setDialogOpen] = useState(false);
+   // State to control Dialog visibility
+  const [dialogMessage, setDialogMessage] = useState(''); 
+  // State for dialog message
 
-  
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     const form = event.target as HTMLFormElement;
     const formData = new FormData(form);
-  
+
     fetch("https://formspree.io/f/mqaplayq", {
       method: "POST",
       body: formData,
+      headers: {
+        Accept: "application/json",
+      },
     })
-    .then((response) => {
-      if (!response.ok) {
-        console.error('Error:', response.statusText);
-      } else {
-        console.log("Response:", response);
-        alert("Thank you for your submission! We will get back to you soon.");
-        form.reset();
-      }
-    })
-    .catch((error) => {
-      console.error("Network error or other issue:", error);
-      alert("An error occurred while sending the form. Please try again later.");
-    });
+      .then(async (response) => {
+        const text = await response.text();
+        console.log("Raw Response:", text);
+
+        try {
+          const data = JSON.parse(text);
+          console.log("Parsed Response:", data);
+
+          if (!response.ok) {
+            throw new Error(data.error || `HTTP error! Status: ${response.status}`);
+          }
+
+          setDialogMessage(
+            "🎉 Thank you for reaching out!\n\nWe've received your inquiry and will get back to you within 24-48 hours. If it's urgent, feel free to contact us directly at +233 123 456 789 or info@deregans.com.\n\nWe appreciate your interest in our products!"
+          );
+          setDialogOpen(true); 
+          // Open the dialog on successful form submission
+          form.reset();
+        } catch (error) {
+          console.error("JSON Parsing Error:", error);
+          setDialogMessage("An error occurred while processing the response.");
+          setDialogOpen(true); 
+          // Open dialog for error
+        }
+      })
+      .catch((error) => {
+        console.error("Fetch Error:", error);
+        setDialogMessage("An error occurred while sending the form. Please try again later.");
+        setDialogOpen(true); 
+        // Open dialog for fetch error
+      });
   };
-  
-  
 
   return (
-    <section id="contact" className="py-20 bg-white">
+    <section id="contact" className=" pb-2 py-20 bg-white">
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-black mb-6">Let’s Work Together</h1>
@@ -150,6 +174,27 @@ const Contact = () => {
           </div>
         </div>
       </div>
+
+      {/* ShadCN Dialog for Success/Error Messages */}
+      <Dialog open={isDialogOpen} onOpenChange={setDialogOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Message</DialogTitle>
+          </DialogHeader>
+          <DialogDescription className="text-gray-700">
+            {dialogMessage}
+          </DialogDescription>
+          <DialogFooter>
+            <button
+              className="bg-orange-600 text-white px-4 py-2 rounded-md hover:bg-orange-700"
+              onClick={() => setDialogOpen(false)}
+            >
+              Close
+            </button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
     </section>
   );
 };

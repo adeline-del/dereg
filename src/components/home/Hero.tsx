@@ -50,15 +50,16 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <div className="pt-0">
+    // <div className="pt-0">
+       <div className="relative pb-16 md:pb-24"> 
+
       {/* Hero Section with Floating Slider */}
       <section id="home" className="relative h-screen overflow-hidden bg-black z-20">
         {slides.map((slide, index) => (
           <div
             key={index}
-            className={`absolute inset-0 w-full h-full transition-opacity duration-750 ease-in-out ${
-              currentSlide === index ? "opacity-100" : "opacity-0"
-            }`}
+            className={`absolute inset-0 w-full h-full transition-opacity duration-750 ease-in-out ${currentSlide === index ? "opacity-100" : "opacity-0"
+              }`}
             style={{
               zIndex: currentSlide === index ? 1 : 0
             }}
@@ -75,9 +76,8 @@ const HeroSection = () => {
             {/* Content */}
             <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
               <div
-                className={`text-white transition-all duration-500 transform ${
-                  isAnimating ? "translate-y-10 opacity-0" : "translate-y-0 opacity-100"
-                }`}
+                className={`text-white transition-all duration-500 transform ${isAnimating ? "translate-y-10 opacity-0" : "translate-y-0 opacity-100"
+                  }`}
               >
                 <h1 className="text-4xl md:text-6xl font-bold mb-6">{slide.title}</h1>
                 <p className="text-xl md:text-2xl mb-8 max-w-2xl">{slide.subtitle}</p>
@@ -99,9 +99,8 @@ const HeroSection = () => {
             <button
               key={index}
               onClick={() => setCurrentSlide(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                currentSlide === index ? "bg-white scale-125" : "bg-white/50 scale-100"
-              }`}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${currentSlide === index ? "bg-white scale-125" : "bg-white/50 scale-100"
+                }`}
               aria-label={`Go to slide ${index + 1}`}
             />
           ))}
@@ -141,26 +140,26 @@ const HeroSection = () => {
 
 
 
- <div className="absolute bottom-[-96px] left-0 w-full z-20 pointer-events-none">
-          <svg
-            className="w-full h-auto"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 1440 320"
-          >
-            <path
-              stroke="white"
-              strokeWidth="1"
-              fill="white"
-              d="M0,96L60,85.3C120,75,240,53,360,69.3C480,85,600,139,720,176C840,213,960,235,1080,229.3C1200,224,1320,192,1380,176L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"
-            ></path>
-          </svg>
-        </div>
+<div className="absolute bottom-[-50px] md:bottom-[-96px] left-0 w-full z-[30] pointer-events-none">
+  <svg
+    className="w-full min-h-[60px]"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 1440 320"
+  >
+    <path
+      stroke="white"
+      strokeWidth="1"
+      fill="white"
+      d="M0,96L60,85.3C120,75,240,53,360,69.3C480,85,600,139,720,176C840,213,960,235,1080,229.3C1200,224,1320,192,1380,176L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"
+    ></path>
+  </svg>
+</div>
 
 
 
 
-          {/* SVG Simplified Curve placed at the bottom */}
-{/* <div className="absolute bottom-[-96px] left-0 w-full z-20 pointer-events-none">
+        {/* SVG Simplified Curve placed at the bottom */}
+        {/* <div className="absolute bottom-[-96px] left-0 w-full z-20 pointer-events-none">
   <svg
     className="w-full h-auto"
     xmlns="http://www.w3.org/2000/svg"
