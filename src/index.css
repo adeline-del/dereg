@@ -204,9 +204,9 @@
 
 
   /* Tailwind or a separate CSS file */
-.clip-top-curve {
+/* .clip-top-curve {
   clip-path: path('M0,96L60,85.3C120,75,240,53,332,69.3C480,85,600,139,720,176C840,213,960,235,1080,229.3C1200,224,1320,192,1380,176L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,332,320C240,320,120,320,60,320L0,320Z');
-}
+} */
 
 /* @layer base {
   * {
@@ -221,9 +221,14 @@
 .contact {
   padding-bottom: 50px; /* Adjust as needed */
   /* or */
-  margin-bottom: 150px; /* Adjust as needed */
+  margin-bottom: 150px;
+   /* Adjust as needed */
 }
 
-footer {
-  margin-top: 150px; /* Adjust to add space above the footer */
+
+.curve-svg {
+  z-index: 30;
+}
+.footer {
+  z-index: 10;
 }

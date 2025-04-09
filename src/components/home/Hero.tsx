@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
@@ -25,29 +25,31 @@ const HeroSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
 
-  // Handle next slide
-  const nextSlide = () => {
+  // Memoizing the nextSlide function with useCallback
+  const nextSlide = useCallback(() => {
     if (!isAnimating) {
       setIsAnimating(true);
       setCurrentSlide((prev) => (prev + 1) % slides.length);
       setTimeout(() => setIsAnimating(false), 750);
     }
-  };
+  }, [isAnimating]);
 
-  // Handle previous slide
-  const prevSlide = () => {
+  // Memoizing the prevSlide function with useCallback
+  const prevSlide = useCallback(() => {
     if (!isAnimating) {
       setIsAnimating(true);
       setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
       setTimeout(() => setIsAnimating(false), 750);
     }
-  };
+  }, [isAnimating]);
 
   // Auto slide every 5 seconds
   useEffect(() => {
     const timer = setInterval(nextSlide, 5000);
     return () => clearInterval(timer);
-  }, []);
+  }, [nextSlide]);
+
+
 
   return (
     // <div className="pt-0">
@@ -140,21 +142,21 @@ const HeroSection = () => {
 
 
 
-<div className="absolute bottom-[-50px] md:bottom-[-96px] left-0 w-full z-[30] pointer-events-none">
-  <svg
-    className="w-full min-h-[60px]"
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 1440 320"
-  >
-    <path
-      stroke="white"
-      strokeWidth="1"
-      fill="white"
-      d="M0,96L60,85.3C120,75,240,53,360,69.3C480,85,600,139,720,176C840,213,960,235,1080,229.3C1200,224,1320,192,1380,176L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"
-    ></path>
-  </svg>
-</div>
-
+<div className="absolute bottom-[-1px] left-0 w-full overflow-hidden z-10">
+          <svg
+            className="w-full h-20"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1440 320"
+            preserveAspectRatio="none"
+          >
+            <path
+              stroke="white"
+              strokeWidth="1"
+              fill="white"
+              d="M0,96L60,85.3C120,75,240,53,360,69.3C480,85,600,139,720,176C840,213,960,235,1080,229.3C1200,224,1320,192,1380,176L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"
+            ></path>
+          </svg>
+        </div>
 
 
 

@@ -1,11 +1,11 @@
-import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
-  // const [activeSection, setActiveSection] = useState('');
+  const navigate = useNavigate();
   const [activeSection, setActiveSection] = useState('home'); 
 
   const toggleMenu = () => setIsOpen(!isOpen);
@@ -13,19 +13,76 @@ const Navbar = () => {
   // Track active section
   const handleLinkClick = (section: string) => {
     setActiveSection(section);
-    if (location.pathname === '/') {
+    
+    if (location.pathname === '/products' && section !== 'products') {
+      // If we're on products page and clicking a home page section
+      navigate('/', { state: { scrollTo: section } });
+    } else if (location.pathname === '/') {
+      // If we're on home page
       const element = document.getElementById(section);
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+        const navHeight = 100;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - navHeight;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
       }
     }
   };
 
-  // const handleLinkClick = (section: string) => {
-    // setActiveSection(section);
-  // };
+  // Handle scroll to section after navigation
+  useEffect(() => {
+    if (location.pathname === '/' && location.state?.scrollTo) {
+      const section = location.state.scrollTo;
+      const element = document.getElementById(section);
+      if (element) {
+        const navHeight = 100;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - navHeight;
 
-  
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }
+  }, [location]);
+
+  // Update active section based on scroll position
+  useEffect(() => {
+    if (location.pathname !== '/') return;
+
+    const handleScroll = () => {
+      const sections = ['home', 'about', 'sustainability', 'contact'];
+      const navHeight = 100;
+
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top <= navHeight && rect.bottom >= navHeight) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [location.pathname]);
+
+  // Reset active section when route changes
+  useEffect(() => {
+    if (location.pathname === '/') {
+      setActiveSection(location.state?.scrollTo || 'home');
+    } else if (location.pathname === '/products') {
+      setActiveSection('products');
+    }
+  }, [location.pathname, location.state]);
 
   return (
     <nav className="fixed top-[35px] left-0 w-full bg-white/50 shadow-lg z-50 backdrop-blur-md">
@@ -41,8 +98,6 @@ const Navbar = () => {
     <span className="text-3xl font-bold text-black -ml-14">Deregan's</span>
     </Link>
         </div>
-
-
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
@@ -87,19 +142,23 @@ const Navbar = () => {
               Sustainability
               {activeSection === 'sustainability' && <div className="absolute bottom-0 left-0 w-full h-0.5 bg-orange-600 transform -translate-y-0.5" />}
             </button>
-  <button
-    onClick={() => {
-      handleLinkClick('contact');
-      // document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-    }}
-    className={`bg-orange-600 text-white px-4 py-2 rounded-md hover:bg-orange-700 transition-colors ${
-      activeSection === 'contact' ? 'ring-2 ring-orange-400' : ''
-    }`}
-  >
-    Contact Us
-  </button>
-
-
+            <button
+              onClick={() => {
+                handleLinkClick('contact');
+              }}
+              className={`bg-orange-600 text-white px-4 py-2 rounded-md hover:bg-orange-700 transition-colors ${
+                activeSection === 'contact' ? 'ring-2 ring-orange-400' : ''
+              }`}
+            >
+              Contact Us
+            </button>
+              {/* <button
+              onClick={() => handleLinkClick('contact')}
+              className={`relative text-lg font-medium text-black hover:text-orange-200 transition-colors`}
+            >
+              Contact Us
+              {activeSection === 'contact' && <div className="absolute bottom-0 left-0 w-full h-0.5 bg-orange-600 transform -translate-y-0.5" />}
+            </button> */}
           </div>
 
           {/* Mobile Menu Button */}
@@ -165,17 +224,14 @@ const Navbar = () => {
               Sustainability
             </button>
             <button
-            onClick={() => {
-              handleLinkClick('contact');
-              // document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-              setIsOpen(false); 
-              // Close mobile menu
-  }}
-  className="block w-full text-left px-3 py-2 bg-orange-600 text-white rounded-md hover:bg-orange-700"
->
-  Contact Us
-</button>
-
+              onClick={() => {
+                handleLinkClick('contact');
+                setIsOpen(false);
+              }}
+              className="block w-full text-left px-3 py-2 bg-orange-600 text-white rounded-md hover:bg-orange-700"
+            >
+              Contact Us
+            </button>
           </div>
         </div>
       )}

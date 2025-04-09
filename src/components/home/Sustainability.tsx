@@ -1,14 +1,18 @@
 import React from 'react';
 import { Droplet, Users, Sprout, Wind } from 'lucide-react';
 import { FaLeaf } from 'react-icons/fa';
-    // FaDroplet , FaUsers, FaSprout, FaWind
 
 
 
 const Sustainability: React.FC = () => {
   return (
-    <section id="sustainability" className="py-20 bg-orange-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<section id="sustainability" className="relative py-20 bg-orange-50">
+  {/* Background Elements */}
+  <div className="absolute inset-0 bg-gradient-to-br from-orange-50 to-white z-0"></div>
+  <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-orange-100 rounded-bl-full opacity-30 z-0"></div>
+  <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-orange-100 rounded-tr-full opacity-30 z-0"></div>
+      
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-black mb-6">

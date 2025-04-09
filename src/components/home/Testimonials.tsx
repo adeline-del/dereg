@@ -7,19 +7,12 @@ const testimonials = [
     name: "Ama Osei",
     role: "Cocoa Farmer, Western Region",
     content:
-      "Since switching to Deregans' organic fertilizers, my cocoa yields have increased by 30% while soil health has visibly improved. Their sustainable approach has transformed my farm.",
+      "Since switching to Deregans' organic fertilizers, my cocoa yields have increased by 30% while soil health has visibly improved.",
+      //  Their sustainable approach has transformed my farm."
     image: "https://res.cloudinary.com/djfnmztu9/image/upload/v1742485336/fruit-3247447_1920_bz3klj.jpg",
   },
   {
     id: 2,
-    name: "Francis Mensah",
-    role: "Vegetable Farmer, Ashanti Region",
-    content:
-      "The organic pest control solutions from Deregans have eliminated harmful chemicals from my vegetable farm. My produce is healthier, and I've seen beneficial insects return to my fields.",
-    image: "https://res.cloudinary.com/djfnmztu9/image/upload/v1742482531/farm_iu4rks.jpg",
-  },
-  {
-    id: 3,
     name: "Kwame Addo",
     role: "Rice Farmer, Volta Region",
     content:
@@ -27,13 +20,21 @@ const testimonials = [
     image: "https://res.cloudinary.com/djfnmztu9/image/upload/v1742485417/rice-testi_gmwkxn.jpg",
   },
   {
-    id: 4,
+    id: 3,
     name: "Ama Boateng",
     role: "Tomato Farmer, Eastern Region",
     content:
       "Since we switched to Deregan’s organic weed control, the weeds are better controlled, compared to other products we’ve used.",
     image: "https://res.cloudinary.com/djfnmztu9/image/upload/v1742482530/cultivation_bnucy5.jpg",
   },
+  //  {
+  //   id: 4,
+  //   name: "Francis Mensah",
+  //   role: "Vegetable Farmer, Ashanti Region",
+  //   content:
+  //     "The organic pest control solutions from Deregans have eliminated harmful chemicals from my vegetable farm. My produce is healthier, and I've seen beneficial insects return to my fields.",
+  //   image: "https://res.cloudinary.com/djfnmztu9/image/upload/v1742482531/farm_iu4rks.jpg",
+  // },
   {
     id: 5,
     name: "Yaw Antwi",
@@ -47,7 +48,7 @@ const testimonials = [
     name: "Hammed Mumuni",
     role: "Cocoyam Farmer, Northern Region",
     content:
-      "We’ve been using Deragan’s organic fertilizers for a while, and the results have been amazing. Our cocoyams are bigger and of higher quality. I have already started recommending them.",
+      "We’ve been using Deragan’s organic fertilizers for a while, and the results have been amazing. Our cocoyams are bigger and of higher quality.",
     image: "https://res.cloudinary.com/djfnmztu9/image/upload/v1742909465/yam-5318942_1280_pfltbd.jpg",
   }
 ];
@@ -64,11 +65,11 @@ const Testimonials = () => {
   }, []);
 
   return (
-<div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 mt-[-80px] z-[10] bg-white">
+<div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 mt-[-100px] z-[10] bg-white">
   
 {/* <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 z-[5] bg-white"> */}
 <div className="text-center mb-16">
-        <h1 className="text-4xl md:text-5xl font-bold  text-black mt-2 mb-6">
+        <h1 className="text-4xl md:text-4xl font-bold  text-black mt-2 mb-6">
         {/* <h1 className="text-4xl md:text-5xl font-bold text-black mt-2 mb-6"> */}
 
           What Farmers Say About Us
@@ -76,7 +77,7 @@ const Testimonials = () => {
         <div className="w-24 h-1 bg-orange-600 mx-auto"></div>
       </div>
 
-      <div className="relative flex items-center justify-center min-h-[400px]">
+      <div className="relative flex items-center justify-center min-h-[350px]">
         <AnimatePresence mode="wait">
           {testimonials.map((testimonial, i) => {
             const isActive = i === index;
