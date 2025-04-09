@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Facebook, Instagram, Mail, Phone, Whatsapp } from "lucide-react";
+import { Facebook, Instagram, Mail, Phone, MessageCircle } from "lucide-react";
 
 const TopBar = () => {
   return (
@@ -17,7 +17,7 @@ const TopBar = () => {
           <Facebook size={18} />
         </Link>
         <Link to="https://wa.me/233202647141" className="hover:text-gray-300">
-          <Whatsapp size={18} />
+          <MessageCircle size={18} />
         </Link>
         <Link to="https://www.instagram.com/" className="hover:text-gray-300">
           <Instagram size={18} />
